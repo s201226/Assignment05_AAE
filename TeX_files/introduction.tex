@@ -1,20 +1,24 @@
 \section{Introduction}
-The goal of this project is the realization of the Beam Forming Network able to provide the right feeding to an array of four elements which should exhibit a tapering able to shape the array factor so that the SLL is lower than -20 dB (exercise 2 of the previous assignment)..
+The goal of this project is the simulation of the complete structure realizing a four element array with amplitude tapering, obtaining a SLL of -20 dB.
 
 \par\medskip
 \noindent
-This first part (definition of inter-element spacing and tapering) was already carried out during the previous assignment and leaded us to choose the values that we will use during the rest of the project.
+The design is the same one we proposed in the previous assignment, but all the components will undergo a process of optimization in order to make us able to provide reliable and complete simulations finally attesting the correct behavior of the structure.
 
 \par\medskip
 \noindent
-In particular, the first part of the work deals with the handmade project of the BFN in order to obtain the correct power ratios for the four radiators, which are the patches we designed in the second assignment (resonance at 2.45 GHz and 120 $\Omega$ input impedance), the correct phasing, 0 in order to obtain a broadside array, and an input impedance of 50 $\Omega$. All these specs should be met at 2.45 GHz and in the largest possible band around this frequency.
-\noindent
-In this part, simulation of the single parts of the BFN are also provided, in order to get a glimpse on the correct or not correct behavior of the final version.
+The first part will deal with the simulation and optimization of the power splitters that will later be inserted in the BFN. Both the even and uneven power splitter will be tested in order to identify the discontinuities present in the model and minimizing their effect.
+
 
 \par\medskip
 \noindent
-The second part is related to the simulation of the BFN. It is worth to anticipate from the very beginning that this part turned out to be very tricky, since in a first moment, through the use of \textit{CST Design Studio} we seemed to confirm our design and even optimize it in a good way, but later on we encountered lots of difficulties in replicating such results in \textit{CST Microwave Studio}, which poses lots of difficulties in the optimization due to the very long simulation time, dense meshes and huge weight of all the non linearities and non idealities. In fact, even if the single parts of our BFN work in a reasonable way when standalone, they do not work so well when they are put together. 
+The second part is related to the simulation of the BFN, in order to verify if the previously optimized splitters still work the right way when united in a single model and to correct the structure if not.
+
 
 \par\medskip
 \noindent
-The third and last part deals with the simulation of the radiating structure of the array. First, a further optimization of the single patch was carried out, in order to get the most close as possible to the prescribed 120 $\Omega$ impedance and 2.45 GHz resonance. Then, the patches are put together in order to verify how they behave when assembled in order to form the array, to see how they mutually influence each other. We have to mention that even in this case simulation was not straightforward and the problems encountered in the second part about long simulation time and difficulty on tuning were present even in this case, so that the results hopefully should be, even in this case, susceptible to further perfectioning.
+Last, in the third and final part, the complete antenna will be tested and its radiating properties will finally be verified, allowing us to finally understand if the BFN feeds the structure in a way that fulfills the design requirements or not.
+
+\par\medskip
+\noindent
+At the end of the three described phases, a cad file will be produced containing the information about the final structure a producer would need in order to print the antenna.
