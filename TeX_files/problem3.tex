@@ -1,3 +1,4 @@
+
 \newpage
 \section{Full array fine tuning and results}
 
@@ -77,4 +78,59 @@ Finally, the simulation's outcomes are the following:
 		\subfloat[][\emph{positive (x,z) plane cartesian view, $\varphi=0^\circ$}]{\includegraphics[scale=.4]{p3_XZ_cart2}}\\
 	\caption{Radiation pattern's cut planes. As it appears the array radiates broadside within the (y,z) plane. The side lobes level limit is fulfilled, HPBW=20.4$^\circ$.}.
 	\label{fig:p3_cuts2}
+\end{figure}
+
+\newpage 
+\appendix
+\section{Appendix: bends design}
+
+Every time a bend is present, it introduces capacitive and inductive contributions to the microstrip line. To compensate this effects we varied the bend angle till the optimum is reached. To design the bend we cut away the highlighted part in figure \ref{fig:A_bend1}, obtained by rotating by an angle $\alpha$ a rectangle then subtracted from the bend with boolean transformation. The simulation of the 50$\Omega$ bend within the 3dB splitter confirms the compensation (figure \ref{fig:A_bend}).
+
+\begin{figure}[H] 
+	\centering
+	\includegraphics[scale=0.65]{A_bends}
+	\caption{3D far field radiation pattern.}
+	\label{fig:A_bend1}
+\end{figure}
+ 
+\begin{figure}[H] 
+	\centering
+	\includegraphics[scale=0.45]{A_bends2}
+	\caption{3D far field radiation pattern.}
+	\label{fig:A_bend}
+\end{figure}
+
+\newpage 
+\section{Appendix: mitered T-junction design}
+
+Mitered junctions have been used to have better power splitting performance within the BFN. Looking at figure \ref{fig:p3_mitered_junctions}b one can notice that the cut is positioned with the aim of giving the power the same path length both toward left and right branch. Referring to figure \ref{fig:p3_mitered_junctions}a:
+\begin{equation}
+l = \sqrt{\Big(\frac{W_{50}}{2}\Big)^2+\Big(\frac{W_{70}}{2}\Big)^2} \notag
+\end{equation}
+and
+\begin{equation}
+\theta = \sin^{-1}\frac{1}{2}\frac{W_{70}}{l} \notag
+\end{equation}
+To design the section depicted in figure \ref{fig:p3_mitered_junctions}b the same calculations hold.
+
+\begin{figure}[H] 
+	\centering
+	\subfloat[][\emph{3dB splitter}]{\includegraphics[scale=.4]{A_3dBT}}\quad
+	\subfloat[][\emph{5.3dB splitter}]{\includegraphics[scale=.35]{A_5dBT}}\\
+	\caption{T junction design.}.
+	\label{fig:p3_mitered_junctions}
+\end{figure}
+
+\newpage
+\section{Appendix: input line length dependence}
+
+Our 50$\Omega$ input line has a length of about 35mm. The connection between the transceiver is likely to happen by means of a coaxial cable, whose length would be actually undefined, then it is important to make the array independent on the input line length. Hence, the BFN must be able both to perfectly match the feeding line with the patches and keep the input reflection coefficient low enough (in our case this is mainly accomplished through the 70$\Omega$ quarter wavelength transformers and the 50$\Omega$ bends compensation), whichever the feeding line's length.
+
+To verify the good behaviour of the input matching we propose the simulation outcomes depicted in figure \ref{fig:A_INlineL}, where the input vertical 50$\Omega$ line length has been changed. 
+
+\begin{figure}[H] 
+	\centering
+	\includegraphics[scale=0.45]{A_length}
+	\caption{The input line length has been changed, the measures are expressed in millimetres. System is really sensible to lines longer than 50mm, showing a shift in resonance frequency above that value.}
+	\label{fig:A_INlineL}
 \end{figure}
