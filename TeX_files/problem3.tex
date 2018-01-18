@@ -1,101 +1,81 @@
-\section{Problem no.3}
-In this last part the aim is to verify the radiating element behavior, starting from the single patch and arriving to the complete array. For the patch antenna we use the one we designed for the second laboratory, that are described in the following image (Figure \ref{patch} shows the patch with the values after the first optimization and figure \ref{patch_mesh} the mesh with the particular of the feeding line).
-\begin{figure}[H]
+
+\newpage
+\section{Full array fine tuning and results}
+
+\begin{figure}[t] 
 	\centering
-	\includegraphics[width=0.9\linewidth]{patch.png}
-	\caption{patch resonant at $2.45GHz$}
-	\label{patch}
+	\includegraphics[scale=0.45]{p3_RL}
+	\caption{Broadband view for the input reflection coefficient seen from full array input port.}
+	\label{fig:p3_scattering}
 \end{figure}
-\begin{figure}[H]
+Within this last step the tuned BFN and radiating part are connected. The spacing between elements is set to be compliant with the GL limit at the central resonance frequency f\textsubscript{0}=2.45GHz (distance between elements, d=$\leq$88mm). 
+Actually what follows mainly concerns the full antenna's radiation pattern, rather than the array factor alone. This is legitimated by the following facts:
+\begin{itemize}
+	\item what can be measured to describe the real radiation properties of a microstrip array antenna is the far field radiation pattern;
+	\item the full AF's extraction from simulation introduces numerical errors that makes the calculation inaccurate far from the main lobe centre.
+\end{itemize}
+Furthermore,  moving the GL requirement from AF to the radiation patter, we gain a more robust design, less affected by discontinuities' and line width's losses\footnote{the total radiation pattern is given by the product of the single patch's pattern and the normalized array factor. Since the former term damps the latter then the total radiated field will be lowered as well. Moreover we can relax the requirement on tapering having more uniform microstrip lines (in terms of width).}.  
+
+Patch's width and length are set equal to: W\textsubscript{patch}=64mm and L\textsubscript{patch}=24.7mm. Once BFN and radiators have been joint, we have the complete array reported in figure \ref{fig:p3_array}, which has been simulated with the mesh settings printed in figure \ref{fig:p3_mesh}. To keep the computation simpler we exploited the microstrip field distribution and a (y,z) transverse magnetic field symmetry plane has been used as boundary condition (with open boundary, added space in all directions).
+
+Finally, the simulation's outcomes are the following:
+\begin{description}
+	\item[Return loss and bandwidth] Overall, the input reflection coefficient is worsened by the connection of the two parts. Although the various sections have been finely tuned, the difference between using excitation ideal port and connecting actual transmission lines cannot be reduced further. We reported in figure \ref{fig:p3_scattering} the best result allowed by optimization. Unfortunately $|$S\textsubscript{11}$|$ reaches its minimum at f\textsubscript{0}\textquotesingle=2.438GHz, not exactly at f\textsubscript{0}=2.45GHz. Though we obtained such discrepancy, this should not be a problem because this simulation does not represents the real behaviour of the built antenna, whose production is affected by technological limitations related to the quality of the chosen realization process (i.e. leading to fluctuation in the substrate dielectric permittivity, or consistency in line widths and lengths), that eventually leads to difference between simulated and actual antenna.  
+	Besides that, the -20dB bandwidth is B\textsubscript{-20dB}=14.741MHz around f\textsubscript{0}\textquotesingle=2.438GHz, whereas  B\textsubscript{-10dB}=49.249MHz, this is a very selective (narrowband) antenna. To sum up, the array looks barely behaving as expected both in- and out-of-band, this must be confirmed by measurements though.
+	
+	\item[Far field radiation pattern] The radiation pattern (with cuts) and the axial ratio are depicted in figures from \ref{fig:p3_RP} to \ref{fig:p3_cuts2}. These pictures confirm that we have a broadside array (expected, since the radiators are positioned along the $x$-axis). The ground plane and the beam forming network presence distort the pattern, preventing the array to radiate along negative $y$-axis tilting the main lobe and directing the maximum radiation along ($\theta=-13^\circ$,$\varphi=90^\circ$).
+	Moreover, from figure \ref{fig:p3_axial} we notice that the antenna is fully linearly polarized at least within the (y,z) plane (since the patch is single-edge fed this is a expected too). 
+	
+	\item [HPBW and SLL] From figure \ref{fig:p3_cuts2}b,c one has HPBW~=~20.4$^\circ$ and SLL=-20.7dB within the (y,z) plane.
+\end{description}
+
+\begin{figure}[t] 
 	\centering
-	\includegraphics[width=0.9\linewidth]{patch_mesh.png}
-	\caption{mesh used for the patch}
-	\label{patch_mesh}
+	\includegraphics[scale=0.45]{p3_RL2}
+	\caption{In-band view for the input reflection coefficient seen from full array input port.}
+	\label{fig:p3_scattering_band}
 \end{figure}
 
-\paragraph{single antenna} First of all we analyze the single antenna itself, so that we control it resonates at the correct frequency with our feeding. We use a very short line with characteristic impedance close to the patch output one, in order to simulate the effective feeding that will be implemented with the beam forming network. This choice is made also to minimize the contribution due to the mismatching of the load the line, and in fact the length of the microstrip feeding is much less than $\lambda$.
-\begin{figure}[H]
+\begin{figure}[p] 
 	\centering
-	\includegraphics[width=0.9\linewidth]{length_tuning.png}
-	\caption{real part of Z11 of the single patch. the parameter that is switching is the width of the antenna}
-	\label{length_tuning}
+	\includegraphics[scale=0.75, angle=90]{p3_array}
+	\caption{Full array top view, (x,y) plane.}
+	\label{fig:p3_array}
 \end{figure}
-\begin{figure}[H]
+\begin{figure}[p] 
 	\centering
-	\includegraphics[width=0.9\linewidth]{length_tuning2.png}
-	\caption{imaginary part of Z11 of the single patch. the parameter that is switching is the width of the antenna}
-	\label{length_tuning2}
-\end{figure}
-We simulate the antenna scattering parameter, and with this simulation we verify the correct resonance at $2.45GHz$ with an input impedance close to $120\Omega$. On the figure \ref{length_tuning} is possible to see some value of this first simulation. Important to notice that  the impedance is not exactly $120\Omega$. This value is hard to reach and tends to block at almost $160\Omega$ when the width is near to $64.4mm$. On the other side as we can see on figure \ref{length_tuning2} the resonance is a bit before the wanted frequency, but in this case we don't want to optimize the length before simulating the inter elements effects (those contribution could increase the resonance frequency).
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.9\linewidth]{array.png}
-	\caption{patch resonant at $2.45GHz$}
-	\label{array}
+	\subfloat[][\emph{General settings}]{\includegraphics[scale=.5]{p3_mesh1}}\quad
+	\subfloat[][\emph{Special settings}]{\includegraphics[scale=.5]{p3_mesh2}}\quad
+	\subfloat[][\emph{Boundary conditions: symmetry plane}]{\includegraphics[scale=.4]{p3_JamesBonday}}\\
+	\caption{Mesh general and special settings. As it appears the mesh has been increased to fit all the bends and narrower lines the best way.}.
+	\label{fig:p3_mesh}
 \end{figure}
 
-\paragraph{multiple antennas} Composing the array with those antennas we can have a first simulation of the complete radiating element, and so we can make some considerations. The bigger issue in particular are the resonance frequency, which due to the inter elements coupling (as expected) are deviated from the single antenna case. In particular the resonance frequency results shifted of few hundreds of megahertz upward, movement that we have to take in mind in case we want to re-design a similar patch antenna complying better with the specifications.
-\begin{figure}[H]
+\begin{figure}[p] 
 	\centering
-	\includegraphics[width=0.9\linewidth]{scattering_array.png}
-	\caption{all the scattering parameters with feeding on port 1}
-	\label{scattering_array}
+	\includegraphics[scale=0.65]{p3_RP}
+	\caption{3D far field radiation pattern.}
+	\label{fig:p3_RP}
 \end{figure}
-Simulating the four antennas with their entering ports we have a total number of 16 scattering parameters, which are not so easy to handle in order to find the load seen from the beam forming network point of view and optimize it. Because we use a constant tapering for the antennas feeding we can combine the results of this simulation and find only four scattering parameters describing the reflection coefficient of each port. This way we can also find the correlated impedance, so that in our particular case of feeding we can evaluate precisely the active impedance of the antennas. The value founded using the tapering evaluated in the previous parts of the design are showed in the figures \ref{array_real} and \ref{array_imm}
-\begin{figure}[H]
+\begin{figure}[p] 
 	\centering
-	\includegraphics[width=0.9\linewidth]{array_real.png}
-	\caption{real part of Z11 of the array}
-	\label{array_imm}
+	\includegraphics[scale=0.65]{p3_axial}
+	\caption{Far field axial ratio.}
+	\label{fig:p3_axial}
 \end{figure}
-\begin{figure}[H]
+\begin{figure}[p] 
 	\centering
-	\includegraphics[width=0.9\linewidth]{array_imm.png}
-	\caption{imaginary part of Z11 of the array}
-	\label{array_real}
-\end{figure}
-Cause of the symmetry of the structure we have that the impedance of the external elements should slightly differs from the internal one, but as we can see on the scattering parameters on the figure \ref{array_scat} the differences are negligible. On top of that we can finally observe, concerning the scattering parameters, that at the wanted frequency we have less than -20dB matching.
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.9\linewidth]{array_scat.png}
-	\caption{scattering parameters of the array}
-	\label{array_scat}
+	\subfloat[][\emph{(x,y) plane cut, $\theta=0^\circ$}]{\includegraphics[scale=.7]{p3_XY}}\quad
+	\subfloat[][\emph{(y,z) plane cut, $\varphi=0^\circ$}]{\includegraphics[scale=.7]{p3_YZ}}\\
+	\caption{Radiation pattern's directivity polar cut planes. As it appears the array radiates broadside within the (y,z) plane. The radiation is minimum along the negative $y$-direction.}.
+	\label{fig:p3_cuts1}
 \end{figure}
 
-\paragraph{array factor} The last pass is to consider the radiation pattern, which is first of all evaluated with a far field monitor, and after that is exported and elaborated in Matlab in order to verify the correct behavior of the array factor. For this calculation we need also the far field radiation of the single patch antenna, which must be used as a punctual divider for the array far field.
-\begin{lstlisting}
-% import of the data from file exported in ASCII from CST
-data_file='data.txt';
-data=fopen(data_file,'r');
-fgets(data);
-fgets(data);
-data_val=fscanf(data,'%f %f %f %f %f %f %f %f',[8 Inf]);
-[~,len]=size(data_val);
-fclose(data);
-% prev_val is the set of value taken at the first read, which in our case
-% is the radiation pattern of the array
-figure(1) % rad array
-plot(prev_val(1,:),prev_val(3,:),'k',[prev_val(1,1) prev_val(1,len)],[0 0],'-.r',[2.45 2.45],[min(prev_val(3,:)) max(prev_val(3,:))],'-.r')
-figure(2) % rad patch
-plot(data_val(1,:),data_val(3,:),'k',[data_val(1,1) data_val(1,len)],[0 0],'-.r',[2.45 2.45],[min(data_val(3,:)) max(data_val(3,:))],'-.r')
-figure(3) %AF
-plot(data_val(1,:),prev_val(3,:)-data_val(3,:),'k',[data_val(1,1) data_val(1,len)],[-20 -20],'-.r',[90 90],[-40 max(data_val(3,:))],'-.r')
-\end{lstlisting}
-The result of this calculation is the array factor printed in figure \ref{rad_pattern_AF}, which does not respect the initial requirements for the side lobes (only less than -$15dB$) and the grating lobes (which are evident and arrives at $-5dB$). This optimization, as the one in the previous point, is very long and requires a lot of calculation, so we have to accept this as the best result. Regarding all the other characteristic, the array is verified to work in broadband, and the bandwidth at $-3dB$ is $16^{\circ}$.
-\begin{figure}[H]
+\begin{figure}[p] 
 	\centering
-	\includegraphics[width=0.9\linewidth]{rad_pattern_array.png}
-	\caption{radiation of the array}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.9\linewidth]{rad_pattern_patch.png}
-	\caption{radiation of the single patch}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.9\linewidth]{rad_pattern_AF.png}
-	\caption{antenna factor of the array}
-	\label{rad_pattern_AF}
+	\subfloat[][\emph{(x,z) plane polar cut,$\varphi=0^\circ$}]{\includegraphics[scale=.7]{p3_XZ}}\quad
+	\subfloat[][\emph{(x,z) plane cartesian view, $\varphi=0^\circ$}]{\includegraphics[scale=.4]{p3_XZ_cart}}\quad
+		\subfloat[][\emph{positive (x,z) plane cartesian view, $\varphi=0^\circ$}]{\includegraphics[scale=.4]{p3_XZ_cart2}}\\
+	\caption{Radiation pattern's cut planes. As it appears the array radiates broadside within the (y,z) plane. The side lobes level limit is fulfilled, HPBW=20.4$^\circ$.}.
+	\label{fig:p3_cuts2}
 \end{figure}
