@@ -84,21 +84,23 @@ Finally, the simulation's outcomes are the following:
 \appendix
 \section{Appendix: bends design}
 
-Every time a bend is present, it introduces capacitive and inductive contributions to the microstrip line. To compensate this effects we varied the bend angle till the optimum is reached. To design the bend we cut away the highlighted part in figure \ref{fig:A_bend1}, obtained by rotating by an angle $\alpha$ a rectangle then subtracted from the bend with boolean transformation. The simulation of the 50$\Omega$ bend within the 3dB splitter confirms the compensation (figure \ref{fig:A_bend}).
+Every time a bend is present, it introduces capacitive and inductive contributions to the microstrip line. To compensate this effects we varied the bend angle till the optimum is reached. To design the bend we cut away the highlighted part in figure \ref{fig:A_bend1}a, obtained by rotating by an angle $\alpha$ a rectangle then subtracted from the bend with boolean transformation. The simulation of the 50$\Omega$ bend within the 3dB splitter confirms the compensation (figure \ref{fig:A_bend}). Another relevant parameter is represented by the cut's position with respect to the bend's external corner, changed by means of the parameter a that can be found in figure \ref{fig:A_bend1}b. The input reflection coefficient variation is printed in figure \ref{fig:A_bend}. 
 
 \begin{figure}[H] 
 	\centering
-	\includegraphics[scale=0.65]{A_bends}
-	\caption{3D far field radiation pattern.}
+	\subfloat[][\emph{cut's angle}]{\includegraphics[scale=.5]{A_bends}}\quad
+	\subfloat[][\emph{cut's position}]{\includegraphics[scale=.4]{A_bends3}}\\
+	\caption{Bend design}.
 	\label{fig:A_bend1}
 \end{figure}
  
-\begin{figure}[H] 
-	\centering
-	\includegraphics[scale=0.45]{A_bends2}
-	\caption{3D far field radiation pattern.}
-	\label{fig:A_bend}
-\end{figure}
+ \begin{figure}[H] 
+ 	\centering
+ 	\subfloat[][\emph{sweep on $\alpha$}]{\includegraphics[scale=.3]{A_bends2}}\\
+ 	\subfloat[][\emph{sweep on a}]{\includegraphics[scale=.3]{A_bends4}}\\
+ 	\caption{Input reflection coefficient varying bend's parameters.}.
+ 	\label{fig:A_bend}
+ \end{figure}
 
 \newpage 
 \section{Appendix: mitered T-junction design}
@@ -117,7 +119,7 @@ To design the section depicted in figure \ref{fig:p3_mitered_junctions}b the sam
 	\centering
 	\subfloat[][\emph{3dB splitter}]{\includegraphics[scale=.4]{A_3dBT}}\quad
 	\subfloat[][\emph{5.3dB splitter}]{\includegraphics[scale=.35]{A_5dBT}}\\
-	\caption{T junction design.}.
+	\caption{Designed T-junction.}.
 	\label{fig:p3_mitered_junctions}
 \end{figure}
 
