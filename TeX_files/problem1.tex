@@ -1,9 +1,28 @@
 \section{Sections fine tuning}
+\paragraph{First T}
+First of all we have to better optimize the various part of the beam forming network, and so we started considering the first T junction with the lines routing to the second one. In particular the bending situated between the T junction are introducing a strong discontinuity, which must be considered in the optimization. About the optimization of the bending and the use of the mitered solution for the T junction there are Appendix A and Appendix B that explains the process in details. Below we can see the results obtained in this way.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{fT_struct.jpg}
+	\caption{structure of the first T and the branches routing to the second one}
+	\label{fT_struct}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{fT_fin.jpg}
+	\caption{final scattering parameters}
+	\label{fT_fin}
+\end{figure}
 
 \paragraph{Second T}
 Regarding the optimization of the second T junction we used the T designed for the previous assignment and we connect to it the two lines routing to the patches. In this way we control also the contributions due to the discontinuities on all the second part of the beam forming network.
-
-Simulating this new component we have that the matching is no more on the wanted frequency of $2.45GHz$ but some megahertz higher. In order to make it decrease at first we tried to change the values external to the T junction with a freedom degree, that in particular are the angle and the tapering of the bending. The results varying those values are showed in the graphs below. Notice that in practice the resonance is not moved in both the cases.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{sT_struct.png}
+	\caption{structure of the second T and the branches routing to the patches}
+	\label{sT_struct}
+\end{figure}
+Simulating this new component we have that the matching is no more on the wanted frequency of $2.45GHz$ but some megahertz higher. In order to make it decrease at first we tried to change the values external to the T junction with a freedom degree, that in particular are the angle and the tapering of the bending (the same process used for the first T, described above). The results varying those values are showed in the graphs below. Notice that in practice the resonance is not moved in both the cases.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\linewidth]{sT_1angle.png}
@@ -16,7 +35,7 @@ Simulating this new component we have that the matching is no more on the wanted
 	\caption{s11 with respect to the bend tapering}
 	\label{sT_1depth}
 \end{figure}
-Now we have tried to not modify the T junction parameters, but since this way didn't produce the desired effect we have to change the the $\lambda/4$ impedance transformer's length. The graphs below shows the values obtained first with simply changing the transformer length and second the also re-using the old optimized value of the single T junction (notice that in the second case the return losses are lower).
+Now we have tried to not modify the T junction parameters, but since this way didn't produce the desired effect we have to change the the $\lambda/4$ impedance transformer's length (changing the other lines' length means changing the tapering). The graphs below shows the values obtained first with simply changing the transformer length and second the also re-using the old optimized value of the single T junction (notice that in the second case the return losses are lower).
 %\begin{figure}[H]
 %	\centering
 %	\includegraphics[width=1\linewidth]{sT_2depth.png}
@@ -39,6 +58,6 @@ With this final value we reached the desired behavior, so we can use this for co
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\linewidth]{sT_fin.png}
-	\caption{}
+	\caption{final scattering parameters}
 	\label{sT_fin}
 \end{figure}
